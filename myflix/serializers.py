@@ -15,3 +15,19 @@ class listaSerializer(serializers.ModelSerializer):
     class Meta:
         model = lista
         exclude = []
+
+class listaUserSerializer(serializers.ModelSerializer):
+    stream = serializers.ReadOnlyField(source='stream.descricao')
+    class Meta:
+        model = lista
+        fields = ['stream']
+
+    def get_categoria(self, obj):
+        return obj.get_categoria_display()
+
+class listaStreamSerializer(serializers.ModelSerializer):
+    user_nome = serializers.ReadOnlyField(source='user.nome')
+
+    class Meta:
+        model = lista
+        fields = ['user_nome']

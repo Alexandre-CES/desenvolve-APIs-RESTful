@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from myflix.models import user, stream
+from myflix.models import user, stream, lista
 
 class userSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,3 +10,8 @@ class streamSerializer(serializers.ModelSerializer):
     class Meta:
         model = stream
         fields = '__all__'
+
+class listaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = lista
+        exclude = []
